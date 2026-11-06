@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Maison AMG Films</title>
+<meta name="description" content="Maison AMG Films, réalisation et films de marque pour l'hôtellerie de luxe, les marques et l'architecture. Basé à Paris, à l'international.">
+<link rel="canonical" href="https://maisonamgfilms.com/">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23f1efe9'%3EAMG%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maison AMG Films">
+<meta property="og:title" content="Maison AMG Films">
+<meta property="og:description" content="Maison AMG Films, réalisation et films de marque pour l'hôtellerie de luxe, les marques et l'architecture. Basé à Paris, à l'international.">
+<meta property="og:url" content="https://maisonamgfilms.com/">
+<meta property="og:image" content="https://maisonamgfilms.com/img/seine-grenelle.jpg">
+<meta property="og:image:alt" content="Maison AMG Films">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap">
+<style>
+/* Layout: the site is a film. It opens like a black-and-white title sequence, every line set
+   on one vertical axis the way credits are: role to the left of the axis, name to the right.
+   The page has no colour of its own. The only colour comes from the photographs, and it
+   arrives when an image reaches the centre of the screen. */
+:root{
+  --black:#0a0a0a;
+  --white:#f1efe9;
+  --grey:#8f8c86;
+  --line:rgba(241,239,233,.16);
+  --face:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --gutL:max(clamp(16px,5vw,72px), env(safe-area-inset-left,0px));
+  --gutR:max(clamp(16px,5vw,72px), env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; background:var(--black)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--black); color:var(--white); font-family:var(--face); font-variation-settings:"wdth" 100; font-weight:300; font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%; text-size-adjust:100%; -webkit-tap-highlight-color:transparent; overflow-x:hidden; overflow-x:clip; text-align:center}
+img{display:block; max-width:100%; height:auto}
+a{color:inherit; text-decoration:none}
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible{outline:1px solid var(--white); outline-offset:5px}
+::selection{background:var(--white); color:var(--black)}
+.wrap{padding-left:var(--gutL); padding-right:var(--gutR)}
+
+/* The three voices of one family */
+.big{font-variation-settings:"wdth" 125; font-weight:900; text-transform:uppercase; letter-spacing:-.01em; line-height:.86}
+.thin{font-variation-settings:"wdth" 62; font-weight:200; font-style:italic; letter-spacing:-.01em}
+.cap{font-variation-settings:"wdth" 112; font-weight:500; font-size:11.5px; letter-spacing:.32em; text-transform:uppercase}
+.grey{color:var(--grey)}
+
+/* Film grain, printed once and still */
+.grain{position:fixed; inset:0; z-index:40; pointer-events:none; opacity:.07;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.6 -.45'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* Credits: the role sits left of the axis, the name right of it */
+.credits{display:grid; grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr); gap:14px 18px; align-items:baseline; max-width:760px; margin:0 auto}
+.credits dt{grid-column:1; text-align:right; margin:0}
+.credits dd{grid-column:3; text-align:left; margin:0; font-size:clamp(17px,1.6vw,21px); font-variation-settings:"wdth" 100; font-weight:400; min-width:0; overflow-wrap:anywhere}
+.credits dd a{border-bottom:1px solid var(--line); transition:border-color .3s}
+.credits dd a:hover{border-color:var(--white)}
+
+/* Chapter card: a rule, a word, a rule */
+.chapter{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:clamp(14px,2.4vw,32px); margin-bottom:clamp(48px,6vw,88px)}
+.chapter::before, .chapter::after{content:""; height:1px; background:var(--line)}
+.chapter h2{margin:0; font-size:clamp(28px,5.4vw,78px)}
+
+.btn{display:inline-flex; align-items:center; justify-content:center; min-height:50px; padding:0 30px; border:1px solid var(--white);
+  font-variation-settings:"wdth" 112; font-weight:600; font-size:11.5px; letter-spacing:.28em; text-transform:uppercase;
+  transition:background .35s, color .35s}
+.btn:hover, .btn.fill{background:var(--white); color:var(--black)}
+.btn.fill:hover{background:transparent; color:var(--white)}
+
+/* ---------- Header: mirrored around the name ---------- */
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:30; background:var(--black)}
+.nav{position:fixed; z-index:20; top:env(safe-area-inset-top,0px); left:0; right:0; padding-block:16px;
+  background:linear-gradient(var(--black) 30%, rgba(10,10,10,0))}
+.nav .row{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:16px}
+.nav .l{text-align:left} .nav .r{text-align:right}
+.nav a.cap{display:inline-flex; align-items:center; min-height:44px}
+.nav .name{font-size:15px}
+.lang{display:inline-flex; align-items:center; gap:2px}
+.lang button{background:none; border:0; color:var(--grey); font:inherit; letter-spacing:inherit; text-transform:inherit; min-height:44px; padding:0 8px; cursor:pointer; transition:color .3s}
+.lang button:hover, .lang button[aria-pressed="true"]{color:var(--white)}
+.lang i{font-style:normal; color:var(--grey)}
+
+/* ---------- Opening: the title sequence ---------- */
+.open{padding-block:clamp(100px,13vw,170px) clamp(80px,10vw,140px); display:flex; flex-direction:column; align-items:center; gap:clamp(22px,2.6vw,34px)}
+.presents{display:flex; flex-direction:column; gap:8px}
+.scope{position:relative; width:min(100%, 1200px); aspect-ratio:2.39/1; max-width:100%; overflow:hidden; background:#000}
+.scope img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 58%}
+/* Black and white underneath, the colour print on top, faded in over the whole frame.
+   Its opacity is set by script; opacity is what an iPhone animates most smoothly. */
+.duo{position:relative; display:block; overflow:hidden}
+/* The black and white is its own print: hard contrast, deep blacks, silver grain. The grain lifts as the colour arrives. */
+.duo .bw{filter:grayscale(1) contrast(1.4) brightness(.88)}
+.duo::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 2.2 -.6'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>"); background-size:160px 160px; transition:opacity 2.6s cubic-bezier(.4,0,.2,1)}
+.duo.on::after, .still .duo::after{opacity:0}
+.duo .col{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 2.6s cubic-bezier(.4,0,.2,1)}
+.duo.on .col{opacity:1}
+.still .duo .col{opacity:1}
+.scope .duo{position:absolute; inset:0}
+.scope .tc{z-index:2; position:absolute; left:14px; right:14px; bottom:10px; display:flex; justify-content:space-between; gap:12px; color:rgba(241,239,233,.85); text-shadow:0 1px 8px rgba(0,0,0,.9)}
+.title{margin:0; width:min(100%, 1200px); font-weight:400}
+.title .ln{display:block; white-space:nowrap}
+.title .big{font-size:clamp(34px,10.4vw,150px)}
+.title .thin{font-size:clamp(34px,8.4vw,124px); line-height:1.05}
+.open .credits{margin-top:6px}
+.ctas{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:8px}
+
+@media (prefers-reduced-motion: no-preference){
+  .presents{animation:fadein 1.2s ease .2s both}
+  .scope{animation:gate 1.8s cubic-bezier(.77,0,.18,1) .9s both}
+  .title, .open .credits, .ctas{animation:fadein 1.4s ease 2.4s both}
+  @keyframes fadein{from{opacity:0}to{opacity:1}}
+  @keyframes gate{from{clip-path:inset(49.6% 0 49.6% 0)}to{clip-path:inset(0)}}
+}
+
+/* ---------- Manifesto ---------- */
+.manifesto{padding-block:clamp(90px,12vw,170px); border-top:1px solid var(--line)}
+.manifesto blockquote{margin:0 auto; max-width:16em; font-size:clamp(34px,5.6vw,84px); line-height:1.02}
+.manifesto blockquote .big{display:block; font-size:.78em; margin-bottom:.08em}
+.manifesto p{margin:28px auto 0; max-width:30em; color:var(--grey); font-size:clamp(17px,1.5vw,20px); text-wrap:pretty}
+.manifesto .sign{margin-top:22px}
+
+/* ---------- Films: intertitle cards ---------- */
+.block{padding-block:clamp(90px,12vw,170px); border-top:1px solid var(--line)}
+.inner{max-width:1200px; margin:0 auto}
+.films{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:clamp(44px,5vw,72px) clamp(18px,3vw,40px)}
+.film{display:flex; flex-direction:column; align-items:center; gap:20px; min-width:0}
+.card{position:relative; width:100%; aspect-ratio:16/9; max-width:100%; overflow:hidden; background:#050505;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:24px}
+.card::before{content:""; position:absolute; inset:10px; border:1px solid rgba(241,239,233,.28); pointer-events:none; z-index:1; transition:inset .5s}
+.card::after{content:""; position:absolute; inset:15px; border:1px solid rgba(241,239,233,.12); pointer-events:none; z-index:1; transition:inset .5s}
+.film:hover .card::before{inset:14px} .film:hover .card::after{inset:20px}
+.card .duo{position:absolute; inset:0}
+.card img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.card .bw{filter:grayscale(1) contrast(1.4) brightness(.5)}
+.card .col{filter:brightness(.55)}
+.card > *:not(img):not(.duo){position:relative; z-index:2}
+.card h3{margin:0; font-size:clamp(22px,3vw,42px); max-width:100%; text-wrap:balance}
+.card .soon{display:flex; align-items:center; gap:10px}
+.card .soon::before, .card .soon::after{content:""; width:22px; height:1px; background:currentColor; opacity:.6}
+.film .meta{display:flex; flex-direction:column; align-items:center; gap:4px}
+.film .meta b{font-weight:500; font-size:18px}
+.film .meta p{margin:0; color:var(--grey); font-size:16px}
+.film.ready{cursor:pointer}
+
+/* ---------- Photographs: colour arrives at the centre ---------- */
+.reel{display:flex; flex-direction:column; align-items:center; gap:clamp(80px,11vw,160px)}
+.shot{margin:0; display:flex; flex-direction:column; align-items:center; gap:18px; width:100%}
+.shot .imgs{display:grid; gap:clamp(12px,2vw,28px); justify-content:center; width:100%}
+.shot.one .imgs{grid-template-columns:minmax(0, 1100px)}
+.shot.two .imgs{grid-template-columns:repeat(2, minmax(0, 380px))}
+.shot.solo .imgs{grid-template-columns:minmax(0, 560px)}
+.shot img{width:100%; object-fit:cover; cursor:zoom-in}
+.shot .w img{aspect-ratio:2200/1235} .shot .p img{aspect-ratio:9/16} .shot .q img{aspect-ratio:4/5}
+.shot figcaption{display:flex; flex-direction:column; align-items:center; gap:6px; max-width:34em}
+.shot figcaption .thin{font-size:clamp(24px,2.6vw,36px); line-height:1.1}
+
+/* ---------- Trades ---------- */
+.trades{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); border-block:1px solid var(--line)}
+.trade{padding:clamp(30px,3.4vw,52px) clamp(14px,2.4vw,36px); display:flex; flex-direction:column; align-items:center; gap:14px; min-width:0}
+.trade + .trade{border-left:1px solid var(--line)}
+.trade h3{margin:0; font-size:clamp(20px,2vw,28px); text-wrap:balance}
+.trade p{margin:0; color:var(--grey); max-width:24em}
+.lead{margin:0 auto clamp(56px,7vw,96px); max-width:28em; font-size:clamp(20px,2vw,26px); line-height:1.5; text-wrap:balance}
+
+/* ---------- End credits ---------- */
+.end{padding-block:clamp(90px,12vw,170px) 0; border-top:1px solid var(--line)}
+.end .credits{gap:18px 18px}
+.end .call{margin:clamp(80px,10vw,140px) auto 0; font-weight:400}
+.end .call .big{display:block; font-size:clamp(30px,6vw,86px)}
+.end .call .thin{display:block; font-size:clamp(34px,6.6vw,96px); line-height:1.05}
+.end .ctas{margin-top:clamp(32px,4vw,48px)}
+.fin{margin-top:clamp(90px,12vw,170px); white-space:nowrap; font-size:11vw; user-select:none}
+footer{margin-top:clamp(18px,2vw,28px); border-top:1px solid var(--line); padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
+
+/* Viewer */
+dialog.viewer{border:0; padding:0; margin:0; width:100%; height:100%; max-width:none; max-height:none; background:rgba(5,5,5,.97); color:var(--white)}
+dialog.viewer::backdrop{background:rgba(5,5,5,.97)}
+.viewer .in{height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+  padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+#stage{display:contents}
+.viewer img, .viewer video{max-width:100%; max-height:calc(100% - 70px); width:auto; height:auto; object-fit:contain}
+.viewer .bar{display:flex; gap:28px; align-items:center}
+.viewer button{background:none; border:0; color:var(--grey); font:inherit; font-variation-settings:"wdth" 112; font-weight:500; font-size:11.5px; letter-spacing:.28em; text-transform:uppercase; cursor:pointer; padding:12px 6px}
+.viewer button:hover{color:var(--white)}
+
+/* Quiet arrival; the hiding class is set by script only */
+.js-motion .rv{transition:opacity 1.2s ease}
+.js-motion .rv.pre{opacity:0}
+
+/* Narrow */
+@media (max-width: 860px){
+  .films{grid-template-columns:1fr}
+  .trades{grid-template-columns:1fr}
+  .trade + .trade{border-left:0; border-top:1px solid var(--line)}
+}
+@media (max-width: 560px){
+  .nav .name{font-size:13px}
+  .cap{letter-spacing:.22em}
+  .scope{aspect-ratio:16/10}
+  .ctas{flex-direction:column; width:100%}
+  .ctas .btn{width:100%}
+  .credits{grid-template-columns:minmax(0,1fr) 6px minmax(0,1.15fr); gap:12px 10px}
+  .credits dt{font-size:10.5px; letter-spacing:.16em}
+  .shot.two .imgs{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav wrap">
+  <div class="row">
+    <span class="l"><span class="lang cap" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" aria-pressed="true">FR</button><i aria-hidden="true">/</i><button type="button" data-lang="en" aria-pressed="false">EN</button></span></span>
+    <a href="#top" class="name big" aria-label="Maison AMG Films, haut de page" data-tl="top">Maison AMG</a>
+    <span class="r"><a class="cap" href="#fin">Contact</a></span>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Title sequence -->
+  <section class="open wrap" aria-label="Présentation" data-tl="intro">
+    <div class="presents">
+      <span class="cap">Maison AMG Films</span>
+      <span class="cap grey" data-t="presents">présente</span>
+    </div>
+    <div class="scope">
+      <img class="tint" src="img/seine-grenelle.jpg" alt="La tour Eiffel, la statue de la Liberté de l'île aux Cygnes et les tours du Front de Seine, la nuit, reflétées dans le fleuve" data-ta="altSeine" width="2200" height="1467">
+      <div class="tc cap" aria-hidden="true"><span>Paris</span><span>Pont de Grenelle</span></div>
+    </div>
+    <h1 class="title" aria-label="Réalisation et films de marque." data-tl="h1">
+      <span class="ln big fit" data-t="h1a">Réalisation</span>
+      <span class="ln thin fit" data-t="h1b">&amp; films de marque.</span>
+    </h1>
+    <dl class="credits">
+      <dt class="cap grey" data-t="for">Pour</dt><dd data-t="forV">l'hôtellerie de luxe, les marques et l'architecture</dd>
+      <dt class="cap grey" data-t="between">Depuis</dt><dd data-t="betweenV">Paris, à l'international</dd>
+    </dl>
+    <div class="ctas">
+      <a href="#films" class="btn fill" data-t="cta1">Voir les films</a>
+      <a href="#fin" class="btn" data-wa data-t="cta2">Réserver un tournage</a>
+    </div>
+  </section>
+
+  <!-- Manifesto -->
+  <section class="manifesto wrap" aria-label="Manifeste" data-tl="manifesto">
+    <blockquote class="rv">
+      <span class="big" data-t="m1">Ma vie se partage</span>
+      <span class="thin" data-t="m2">entre deux rives.</span>
+    </blockquote>
+    <p class="rv" data-t="m3">D'un côté la Seine, ses pierres grises et ses vitrines. De l'autre, le sable, le Golfe et une lumière qui ne ressemble à aucune autre.</p>
+    <span class="cap grey sign rv">Samer Amgira</span>
+  </section>
+
+  <!-- Films -->
+  <section class="block wrap" id="films">
+    <div class="inner">
+      <div class="chapter rv"><h2 class="big">Films</h2></div>
+      <div class="films">
+        <!-- To publish a film: add data-src="video/xxx.mp4" (hosted file) or data-href="https://…" (YouTube, Vimeo) on the article. -->
+        <article class="film rv" data-title="The Training Shot">
+          <div class="card">
+            <span class="cap grey">Al Hadaf · International</span>
+            <h3 class="big">The Training Shot</h3>
+            <span class="cap soon" data-t="soon">Bientôt en ligne</span>
+          </div>
+          <div class="meta"><b>Story &amp; Impact</b><p data-t="f1">Rythme, tension et sound design.</p></div>
+        </article>
+        <article class="film rv" data-title="Design & Heritage">
+          <div class="card">
+            <span class="cap grey">Liwan Design Studios · International</span>
+            <h3 class="big">Design &amp; Heritage</h3>
+            <span class="cap soon" data-t="soon">Bientôt en ligne</span>
+          </div>
+          <div class="meta"><b>Liwan Exhibition</b><p data-t="f2">Architecture patrimoniale et lumière naturelle.</p></div>
+        </article>
+        <article class="film rv" data-title="The Waterfront">
+          <div class="card">
+            <img class="tint" src="img/katara.jpg" alt="" loading="lazy" style="object-position:50% 30%">
+            <span class="cap">Fairmont · International</span>
+            <h3 class="big">The Waterfront</h3>
+            <span class="cap soon" data-t="soon">Bientôt en ligne</span>
+          </div>
+          <div class="meta"><b>Architectural Study</b><p data-t="f3">Lignes monumentales et hôtellerie de prestige.</p></div>
+        </article>
+        <article class="film rv" data-title="The Café Experience">
+          <div class="card">
+            <span class="cap grey">tmrw. · International</span>
+            <h3 class="big">The Café Experience</h3>
+            <span class="cap soon" data-t="soon">Bientôt en ligne</span>
+          </div>
+          <div class="meta"><b>Brand Film</b><p data-t="f4">Art de vivre, design minimaliste et hospitalité.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photographs -->
+  <section class="block wrap" id="photographie">
+    <div class="inner">
+      <div class="chapter rv"><h2 class="big">Images</h2></div>
+      <div class="reel">
+        <figure class="shot two">
+          <div class="imgs">
+            <div class="p"><img class="tint" src="img/parapluie-rouge.jpg" data-full width="956" height="1700" loading="lazy" alt="Une femme en rouge sous un parapluie rouge, accoudée à un muret de pierre" data-ta="altRed"></div>
+            <div class="p"><img class="tint" src="img/costume-bleu.jpg" data-full width="956" height="1700" loading="lazy" alt="Un homme en costume bleu et canotier marche le long d'un mur gris" data-ta="altBlue"></div>
+          </div>
+          <figcaption><span class="thin" data-t="c1">Elle attend. Lui s'en va.</span><span class="cap grey" data-t="c1p">Paris · Jour de pluie</span></figcaption>
+        </figure>
+        <figure class="shot one">
+          <div class="imgs"><div class="w"><img class="tint" src="img/lusail-nuit-2.jpg" data-full width="2200" height="1235" loading="lazy" alt="La skyline de Lusail illuminée, reflets colorés dans la marina" data-ta="altLusail"></div></div>
+          <figcaption><span class="thin" data-t="c2">Les tours s'allument une à une.</span><span class="cap grey" data-t="c2p">Lusail · Après le coucher du soleil</span></figcaption>
+        </figure>
+        <figure class="shot two">
+          <div class="imgs">
+            <div class="p"><img class="tint" src="img/fenetre-gizeh.jpg" data-full width="956" height="1700" loading="lazy" alt="Un mur de dessins d'enfants, une case vide laisse voir les pyramides de Gizeh" data-ta="altGiza"></div>
+            <div class="p"><img class="tint" src="img/trois-tours.jpg" data-full width="956" height="1700" loading="lazy" alt="Trois tours éclairées de violet et leur reflet dans l'eau calme" data-ta="altTowers"></div>
+          </div>
+          <figcaption><span class="thin" data-t="c3">Gizeh, puis Lusail.</span><span class="cap grey" data-t="c3p">Le sable · La nuit</span></figcaption>
+        </figure>
+        <figure class="shot solo">
+          <div class="imgs"><div class="q"><img class="tint" src="img/telesiege.jpg" data-full width="1360" height="1700" loading="lazy" alt="Un télésiège suspendu au-dessus de sommets enneigés" data-ta="altLift"></div></div>
+          <figcaption><span class="thin" data-t="c4">Entre deux villes, on ne touche plus le sol.</span><span class="cap grey" data-t="c4p">En altitude</span></figcaption>
+        </figure>
+      </div>
+      <div class="ctas rv" style="margin-top:clamp(64px,8vw,110px)">
+        <a class="btn" href="deux-rives/" data-t="series">La série complète · Deux rives</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trades -->
+  <section class="block wrap" id="approche">
+    <div class="inner">
+      <div class="chapter rv"><h2 class="big" data-t="ch3">Métiers</h2></div>
+      <p class="lead rv" data-t="lead">De la direction artistique à l'étalonnage final, chaque plan est pensé comme une séquence de cinéma.</p>
+      <div class="trades rv">
+        <div class="trade"><span class="cap grey" data-t="hosp">Hôtellerie</span><h3 class="big" data-t="t1">Art de vivre</h3><p data-t="t1p">Sublimer l'atmosphère, l'architecture intérieure et l'expérience client des établissements 4*, 5* et Palaces.</p></div>
+        <div class="trade"><span class="cap grey">Corporate</span><h3 class="big" data-t="brand">Films de marque</h3><p data-t="t2p">Traduire le savoir-faire, la vision et le prestige de votre entreprise avec une esthétique cinématographique.</p></div>
+        <div class="trade"><span class="cap grey">Architecture</span><h3 class="big" data-t="t3">Patrimoine</h3><p data-t="t3p">Capturer les volumes, la lumière naturelle et la signature des grands projets architecturaux et immobiliers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- End credits -->
+  <section class="end wrap" id="fin">
+    <div class="inner">
+      <div class="chapter rv"><h2 class="big" data-t="ch4">Générique</h2></div>
+      <dl class="credits rv">
+        <dt class="cap grey" data-t="dir">Réalisation</dt><dd>Maison AMG Films</dd>
+        <dt class="cap grey" data-t="img">Image</dt><dd>Samer Amgira</dd>
+        <dt class="cap grey" data-t="hosp">Hôtellerie</dt><dd data-t="hospV">4*, 5* et Palaces</dd>
+        <dt class="cap grey">Corporate</dt><dd data-t="brand">Films de marque</dd>
+        <dt class="cap grey">Architecture</dt><dd data-t="archV">Patrimoine et immobilier</dd>
+        <dt class="cap grey" data-t="based">Basé en</dt><dd>France</dd>
+        <dt class="cap grey" data-t="shoots">Tournages</dt><dd data-t="shootsV">Partout dans le monde</dd>
+        <dt class="cap grey">Instagram</dt><dd><a href="https://www.instagram.com/maisonamgfilms/" target="_blank" rel="noopener">@maisonamgfilms</a></dd>
+        <dt class="cap grey">WhatsApp</dt><dd><a data-wa href="https://wa.me/33764700404" target="_blank" rel="noopener">+33 7 64 70 04 04</a></dd>
+        <dt class="cap grey">YouTube</dt><dd data-yt>Maison AMG Films</dd>
+      </dl>
+      <h2 class="call rv" aria-label="Donnons vie à votre prochain film." data-tl="call">
+        <span class="big" aria-hidden="true" data-t="call1">Donnons vie à</span>
+        <span class="thin" aria-hidden="true" data-t="call2">votre prochain film.</span>
+      </h2>
+      <div class="ctas rv">
+        <a class="btn fill" data-wa href="https://www.instagram.com/maisonamgfilms/" target="_blank" rel="noopener" data-t="wa">Écrire sur WhatsApp</a>
+      </div>
+      <div class="fin big" id="fin-mark" aria-hidden="true">Maison AMG</div>
+      <footer><span class="cap grey" data-t="foot">© 2026 Maison AMG Films · Tous droits réservés</span></footer>
+    </div>
+  </section>
+</main>
+
+<dialog class="viewer" id="viewer" aria-label="Média en grand" data-tl="viewer">
+  <div class="in">
+    <div id="stage"></div>
+    <div class="bar">
+      <button type="button" id="prev" aria-label="Précédente" data-tl="prev">←</button>
+      <button type="button" id="close" data-t="close">Fermer</button>
+      <button type="button" id="next" aria-label="Suivante" data-tl="next">→</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  /* ---- Settings: fill these in ---- */
+  var WHATSAPP = "33764700404";   // numéro sans le +, ex. "33612345678"
+  var YOUTUBE  = "";   // lien complet de la chaîne
+
+  var WA_TEXT = { fr: "Bonjour Maison AMG Films, j'aimerais discuter d'un projet.", en: "Hello Maison AMG Films, I'd like to talk about a project." };
+  function waLinks(lang){
+    if (!WHATSAPP) return;
+    var wa = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(WA_TEXT[lang]);
+    document.querySelectorAll('[data-wa]').forEach(function(a){ a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
+  }
+  waLinks('fr');
+  if (YOUTUBE) {
+    var s = document.querySelector('[data-yt]'), a = document.createElement('a');
+    a.href = YOUTUBE; a.target = "_blank"; a.rel = "noopener"; a.textContent = s.textContent; s.innerHTML = ''; s.appendChild(a);
+  }
+
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!still) document.documentElement.classList.add('js-motion');
+
+  /* ---- Both title lines set to the width of the frame; FIN fills the page ---- */
+  function fit(){
+    document.querySelectorAll('.fit').forEach(function(el){
+      el.style.fontSize = '100px'; el.style.display = 'inline-block';
+      var w = el.getBoundingClientRect().width, box = el.parentNode.clientWidth;
+      el.style.display = '';
+      if (w) el.style.fontSize = Math.min(170, 100 * box * 0.98 / w) + 'px';
+    });
+    var f = document.getElementById('fin-mark');
+    f.style.fontSize = '100px';
+    var ww = f.scrollWidth;
+    if (ww) f.style.fontSize = (100 * f.clientWidth * 0.99 / ww) + 'px';
+  }
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(fit, 120); });
+
+  /* ---- Each photograph holds in black and white for two seconds, then the colour comes in ----
+     It is printed twice: black and white underneath, colour on top. Once at least half of it
+     is on screen, a two-second count starts; if it leaves before, the count is cancelled.
+     Then the colour print fades in over the whole frame and stays. The opening shot waits
+     for the title sequence to finish, then holds its two seconds too. */
+  var HOLD = 2000;
+  var duos = Array.prototype.slice.call(document.querySelectorAll('img.tint')).map(function(col){
+    var wrap = document.createElement('span'); wrap.className = 'duo';
+    col.parentNode.insertBefore(wrap, col);
+    var bw = col.cloneNode(false);
+    bw.className = 'bw'; bw.alt = ''; bw.setAttribute('aria-hidden', 'true');
+    bw.removeAttribute('id'); bw.removeAttribute('data-full'); bw.removeAttribute('data-ta');
+    col.classList.add('col');
+    if (col.id) { wrap.id = col.id; col.removeAttribute('id'); }
+    wrap.appendChild(bw); wrap.appendChild(col);
+    return { wrap: wrap, hero: !!wrap.closest('.scope'), timer: null };
+  });
+  function reveal(d){ d.wrap.classList.add('on'); }
+  if (still || !('IntersectionObserver' in window)) { document.documentElement.classList.add('still'); duos.forEach(reveal); }
+  else {
+    duos.forEach(function(d){ if (d.hero) setTimeout(function(){ reveal(d); }, 2700 + HOLD); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var d = e.target._duo;
+        var seen = e.isIntersecting && (e.intersectionRatio >= 0.5 || e.intersectionRect.height >= window.innerHeight * 0.5);
+        if (seen && !d.timer) d.timer = setTimeout(function(){ reveal(d); io.unobserve(d.wrap); }, HOLD);
+        else if (!seen && d.timer) { clearTimeout(d.timer); d.timer = null; }
+      });
+    }, {threshold:[0, .25, .5, .75, 1]});
+    duos.forEach(function(d){ if (!d.hero) { d.wrap._duo = d; io.observe(d.wrap); } });
+  }
+
+  /* ---- Quiet arrivals ---- */
+  if (!still && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } });
+    }, {rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){
+      if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add('pre'); io.observe(el); }
+    });
+  }
+
+  /* ---- Viewer (photos + films) ---- */
+  var dlg = document.getElementById('viewer'), stage = document.getElementById('stage');
+  var photos = Array.prototype.slice.call(document.querySelectorAll('img[data-full]')), i = 0;
+  function openDlg(){ try { dlg.showModal(); } catch(e){ dlg.setAttribute('open',''); } }
+  function closeDlg(){ var v = stage.querySelector('video'); if (v) v.pause(); stage.innerHTML = ''; if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+  function showPhoto(n){
+    i = (n + photos.length) % photos.length;
+    stage.innerHTML = ''; var im = new Image(); im.src = photos[i].src; im.alt = photos[i].alt; im.style.cursor = 'zoom-out';
+    im.addEventListener('click', closeDlg); stage.appendChild(im);
+    document.getElementById('prev').hidden = false; document.getElementById('next').hidden = false;
+  }
+  photos.forEach(function(p, n){
+    p.tabIndex = 0;
+    p.addEventListener('click', function(){ showPhoto(n); openDlg(); });
+    p.addEventListener('keydown', function(e){ if (e.key === 'Enter') { showPhoto(n); openDlg(); } });
+  });
+  document.getElementById('prev').addEventListener('click', function(){ showPhoto(i - 1); });
+  document.getElementById('next').addEventListener('click', function(){ showPhoto(i + 1); });
+  document.getElementById('close').addEventListener('click', closeDlg);
+  dlg.addEventListener('keydown', function(e){
+    if (!stage.querySelector('img')) return;
+    if (e.key === 'ArrowRight') showPhoto(i + 1);
+    if (e.key === 'ArrowLeft') showPhoto(i - 1);
+  });
+  dlg.addEventListener('close', function(){ var v = stage.querySelector('video'); if (v) v.pause(); });
+
+  document.querySelectorAll('.film').forEach(function(f){
+    var src = f.getAttribute('data-src'), href = f.getAttribute('data-href');
+    if (!src && !href) return;
+    f.classList.add('ready');
+    var st = f.querySelector('.soon'); if (st) { st.textContent = 'Voir le film'; st.setAttribute('data-t', 'watch'); }
+    if (href) {
+      var a = document.createElement('a'); a.href = href; a.target = '_blank'; a.rel = 'noopener';
+      a.setAttribute('aria-label', 'Voir le film ' + (f.getAttribute('data-title') || ''));
+      a.style.cssText = 'position:absolute;inset:0;z-index:3';
+      f.querySelector('.card').appendChild(a); return;
+    }
+    f.tabIndex = 0;
+    function play(){
+      stage.innerHTML = ''; var v = document.createElement('video');
+      v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true; stage.appendChild(v);
+      document.getElementById('prev').hidden = true; document.getElementById('next').hidden = true;
+      openDlg();
+    }
+    f.addEventListener('click', play);
+    f.addEventListener('keydown', function(e){ if (e.key === 'Enter') play(); });
+  });
+
+  /* ---- French and English: French is written in the page, English lives here ---- */
+  var EN = {
+    top: "Maison AMG Films, back to top", intro: "Introduction", manifesto: "Manifesto", viewer: "Full-size media",
+    presents: "presents",
+    altSeine: "The Eiffel Tower, the Statue of Liberty on the Île aux Cygnes and the Front de Seine towers at night, reflected in the river",
+    h1: "Filmmaking and brand films.", h1a: "Filmmaking", h1b: "&amp; brand films.",
+    "for": "For", forV: "luxury hospitality, brands and architecture",
+    between: "From", betweenV: "Paris, working internationally",
+    cta1: "Watch the films", cta2: "Book a shoot",
+    m1: "My life is split", m2: "between two shores.",
+    m3: "On one side, the Seine, its grey stone and its shop windows. On the other, the sand, the Gulf, and a light like no other.",
+    ch3: "Expertise", ch4: "Credits",
+    soon: "Coming soon", watch: "Watch the film",
+    f1: "Rhythm, tension and sound design.", f2: "Heritage architecture and natural light.",
+    f3: "Monumental lines and prestige hospitality.", f4: "Lifestyle, minimalist design and hospitality.",
+    altRed: "A woman in red under a red umbrella, leaning on a low stone wall",
+    altBlue: "A man in a blue suit and a boater hat walks along a grey wall",
+    altLusail: "The Lusail skyline lit up at night, coloured reflections in the marina",
+    altGiza: "A wall of children's drawings, one empty frame showing the pyramids of Giza",
+    altTowers: "Three towers lit in violet, reflected in still water",
+    altLift: "A chairlift hanging above snow-covered peaks",
+    c1: "She waits. He leaves.", c1p: "Paris · A rainy day",
+    c2: "The towers light up one by one.", c2p: "Lusail · After sunset",
+    c3: "Giza, then Lusail.", c3p: "The sand · The night",
+    c4: "Between two cities, your feet leave the ground.", c4p: "At altitude",
+    series: "The full series · Deux rives",
+    lead: "From art direction to the final color grade, every shot is conceived as a scene from a film.",
+    hosp: "Hospitality", t1: "Lifestyle",
+    t1p: "Bringing out the atmosphere, the interior architecture and the guest experience of 4-star and 5-star hotels and palaces.",
+    brand: "Brand films",
+    t2p: "Translating your company's craft, vision and prestige into a cinematic aesthetic.",
+    t3: "Heritage",
+    t3p: "Capturing the volumes, the natural light and the signature of major architectural and real estate projects.",
+    dir: "Directed by", img: "Photography", hospV: "4-star, 5-star and palaces", archV: "Heritage and real estate",
+    based: "Based in", shoots: "Shoots", shootsV: "Worldwide",
+    call: "Let's bring your next film to life.", call1: "Let's bring", call2: "your next film to life.",
+    wa: "Message on WhatsApp",
+    foot: "© 2026 Maison AMG Films · All rights reserved",
+    close: "Close", prev: "Previous", next: "Next"
+  };
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-t], [data-ta], [data-tl]'));
+  nodes.forEach(function(el){ el._fr = { t: el.innerHTML, a: el.getAttribute('alt'), l: el.getAttribute('aria-label') }; });
+  var langBtns = document.querySelectorAll('.lang button');
+  function setLang(lang){
+    var en = lang === 'en';
+    nodes.forEach(function(el){
+      var k;
+      if ((k = el.getAttribute('data-t')) && EN[k] !== undefined) el.innerHTML = en ? EN[k] : el._fr.t;
+      if ((k = el.getAttribute('data-ta')) && EN[k] !== undefined) el.setAttribute('alt', en ? EN[k] : el._fr.a);
+      if ((k = el.getAttribute('data-tl')) && EN[k] !== undefined) el.setAttribute('aria-label', en ? EN[k] : el._fr.l);
+    });
+    document.documentElement.lang = lang;
+    langBtns.forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang)); });
+    waLinks(lang);
+    fit();
+    try { localStorage.setItem('amg-lang', lang); } catch(e) {}
+  }
+  langBtns.forEach(function(b){ b.addEventListener('click', function(){ setLang(b.getAttribute('data-lang')); }); });
+  var saved = null; try { saved = localStorage.getItem('amg-lang'); } catch(e) {}
+  var start = saved || (location.hash === '#en' ? 'en' : (/^fr/i.test(navigator.language || 'fr') ? 'fr' : 'en'));
+  if (start === 'en') setLang('en'); else document.documentElement.lang = 'fr';
+})();
+</script>
+</body>
+</html>

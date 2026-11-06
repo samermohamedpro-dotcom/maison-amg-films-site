@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<title>Deux rives</title>
+<meta name="description" content="Deux rives, vingt photographies de Samer Amgira entre Paris et le Golfe.">
+<link rel="canonical" href="https://maisonamgfilms.com/deux-rives/">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230a0a0a'/%3E%3Ctext x='32' y='44' font-family='Arial Black,Arial' font-weight='900' font-size='30' text-anchor='middle' fill='%23f1efe9'%3EAMG%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Maison AMG Films">
+<meta property="og:title" content="Deux rives">
+<meta property="og:description" content="Deux rives, vingt photographies de Samer Amgira entre Paris et le Golfe.">
+<meta property="og:url" content="https://maisonamgfilms.com/deux-rives/">
+<meta property="og:image" content="https://maisonamgfilms.com/img/lusail-nuit-2.jpg">
+<meta property="og:image:alt" content="Deux rives">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap">
+<style>
+/* Layout: the same film as the Maison AMG site, here as a photographer's sequence. Black page,
+   one vertical axis, every plate centred with its caption beneath. Each photograph arrives in
+   black and white and its colour opens like an iris as it reaches the middle of the screen. */
+:root{
+  --black:#0a0a0a;
+  --white:#f1efe9;
+  --grey:#8f8c86;
+  --line:rgba(241,239,233,.16);
+  --face:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --gutL:max(clamp(16px,5vw,72px), env(safe-area-inset-left,0px));
+  --gutR:max(clamp(16px,5vw,72px), env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; background:var(--black)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--black); color:var(--white); font-family:var(--face); font-variation-settings:"wdth" 100; font-weight:300; font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased; -webkit-text-size-adjust:100%; text-size-adjust:100%; -webkit-tap-highlight-color:transparent;
+  overflow-x:hidden; overflow-x:clip; text-align:center; padding-left:var(--gutL); padding-right:var(--gutR)}
+img{display:block; max-width:100%; height:auto}
+a{color:inherit; text-decoration:none}
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible{outline:1px solid var(--white); outline-offset:5px}
+::selection{background:var(--white); color:var(--black)}
+
+.big{font-variation-settings:"wdth" 125; font-weight:900; text-transform:uppercase; letter-spacing:-.01em; line-height:.86}
+.thin{font-variation-settings:"wdth" 62; font-weight:200; font-style:italic; letter-spacing:-.01em}
+.cap{font-variation-settings:"wdth" 112; font-weight:500; font-size:11.5px; letter-spacing:.3em; text-transform:uppercase}
+.grey{color:var(--grey)}
+.grain{position:fixed; inset:0; z-index:40; pointer-events:none; opacity:.07;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' seed='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.6 -.45'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.page{max-width:1200px; margin:0 auto}
+
+/* Black and white underneath, the colour print on top, faded in over the whole frame (set by script) */
+.duo{position:relative; display:block; width:fit-content; max-width:100%; margin-inline:auto; overflow:hidden}
+/* The black and white is its own print: hard contrast, deep blacks, silver grain. The grain lifts as the colour arrives. */
+.duo .bw{filter:grayscale(1) contrast(1.4) brightness(.88)}
+.duo::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 2.2 -.6'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>"); background-size:160px 160px; transition:opacity 2.6s cubic-bezier(.4,0,.2,1)}
+.duo.on::after, .still .duo::after{opacity:0}
+.duo .col{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 2.6s cubic-bezier(.4,0,.2,1)}
+.duo.on .col{opacity:1}
+.still .duo .col{opacity:1}
+
+/* Header: mirrored around the title */
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:30; background:var(--black)}
+.nav{position:fixed; z-index:20; top:env(safe-area-inset-top,0px); left:0; right:0; padding:14px var(--gutR) 18px var(--gutL);
+  background:linear-gradient(var(--black) 35%, rgba(10,10,10,0))}
+.nav .row{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:16px; max-width:1200px; margin:0 auto}
+.nav .l{text-align:left} .nav .r{text-align:right}
+.nav a.cap{display:inline-flex; align-items:center; min-height:44px; white-space:nowrap}
+.rule .num{font-size:13px}
+.nav .name{font-size:15px}
+
+/* Opening */
+.opening{padding-block:clamp(110px,13vw,170px) 0; display:flex; flex-direction:column; align-items:center; gap:clamp(22px,2.6vw,34px)}
+.opening h1{margin:0; width:min(100%, 1100px); font-weight:400}
+.opening h1 .ln{display:block; white-space:nowrap}
+.opening h1 .big{font-size:clamp(60px,20vw,280px)}
+.opening h1 .thin{font-size:clamp(60px,18vw,250px); line-height:1}
+.waters{display:grid; grid-template-columns:1fr 1fr; gap:clamp(10px,1.6vw,22px); width:100%}
+.waters figure{margin:0; display:flex; flex-direction:column; align-items:center; gap:10px; min-width:0}
+.waters img{width:100%; aspect-ratio:2.6/1; object-fit:cover}
+.waters .duo{width:100%}
+.intro{max-width:34em; display:flex; flex-direction:column; gap:18px}
+.intro p{margin:0; font-size:clamp(19px,1.9vw,24px); line-height:1.5; text-wrap:pretty}
+.intro p + p{font-size:17px; color:var(--grey)}
+
+/* Credits: chapter on the left of the axis, its name on the right */
+.credits{display:grid; grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr); gap:12px 18px; align-items:baseline; max-width:620px; width:100%; margin:0 auto}
+.credits dt{grid-column:1; text-align:right; margin:0}
+.credits dd{grid-column:3; text-align:left; margin:0; font-size:clamp(17px,1.6vw,21px); font-weight:400; min-width:0}
+.credits dd a{border-bottom:1px solid var(--line); transition:border-color .3s}
+.credits dd a:hover{border-color:var(--white)}
+
+/* Chapters */
+.chapter{padding-top:clamp(110px,14vw,200px)}
+.chapter > header{display:flex; flex-direction:column; align-items:center; gap:18px; margin-bottom:clamp(56px,7vw,100px)}
+.rule{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:clamp(14px,2.4vw,32px); width:100%}
+.rule::before, .rule::after{content:""; height:1px; background:var(--line)}
+.chapter h2{margin:0; font-size:clamp(40px,8vw,112px); text-wrap:balance}
+.chapter > header p{margin:0; max-width:30em; color:var(--grey); font-size:clamp(16px,1.4vw,18px); text-wrap:pretty}
+
+.plates{display:flex; flex-direction:column; align-items:center; gap:clamp(80px,11vw,160px)}
+figure{margin:0}
+.plate{display:flex; flex-direction:column; align-items:center; gap:18px; width:100%}
+.cap-block{display:flex; flex-direction:column; align-items:center; gap:8px; max-width:30em}
+.cap-block .where{display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+.cap-block p{margin:0; font-size:clamp(20px,2vw,26px); line-height:1.25}
+.num{font-variation-settings:"wdth" 112; font-weight:600; font-size:11.5px; letter-spacing:.2em; font-variant-numeric:tabular-nums}
+
+.wide img{width:100%; height:auto}
+.wide .duo{width:100%}
+.tall img{height:min(84vh, 900px); height:min(80svh, 900px); width:auto; aspect-ratio:9/16; object-fit:cover}
+.pair .imgs{display:grid; grid-template-columns:1fr 1fr; gap:clamp(10px,1.6vw,22px); width:min(100%, calc(80vh * 1.125 + 22px))}
+.pair .imgs img{width:100%; aspect-ratio:9/16; object-fit:cover}
+.pair .imgs .duo{width:100%}
+.solo img{height:min(80vh, 860px); height:min(78svh, 860px); width:auto}
+
+.ending{padding-top:clamp(120px,15vw,220px); display:flex; flex-direction:column; align-items:center; gap:clamp(28px,3vw,44px)}
+.ending h2{margin:0; font-size:clamp(44px,9vw,128px)}
+.ending img{height:min(84vh, 940px); height:min(80svh, 940px); width:auto; aspect-ratio:9/16; object-fit:cover}
+.coda{padding-top:clamp(120px,15vw,220px)}
+
+/* Contact sheet: grey until touched */
+.sheet{padding-top:clamp(110px,14vw,200px)}
+.sheet ol{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(10, minmax(0,1fr)); gap:14px 10px}
+.sheet a{display:flex; flex-direction:column; align-items:center; gap:6px}
+.sheet img{width:100%; aspect-ratio:3/4; object-fit:cover; filter:grayscale(1) brightness(.85); transition:filter .4s}
+.sheet a:hover img, .sheet a:focus-visible img{filter:none}
+
+.colophon{padding-top:clamp(110px,14vw,200px)}
+.wordmark{margin-top:clamp(80px,10vw,140px); white-space:nowrap; font-size:13vw; line-height:.82; user-select:none}
+footer{margin-top:clamp(18px,2vw,28px); border-top:1px solid var(--line); padding-block:22px calc(22px + env(safe-area-inset-bottom,0px))}
+
+/* Viewer */
+img[data-full]{cursor:zoom-in}
+dialog.viewer{border:0; padding:0; margin:0; width:100%; height:100%; max-width:none; max-height:none; background:rgba(5,5,5,.97); color:var(--white)}
+dialog.viewer::backdrop{background:rgba(5,5,5,.97)}
+.viewer .in{height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+  padding:max(20px, env(safe-area-inset-top,0px)) max(16px, env(safe-area-inset-right,0px)) max(20px, env(safe-area-inset-bottom,0px)) max(16px, env(safe-area-inset-left,0px))}
+.viewer img{max-height:calc(100% - 64px); max-width:100%; width:auto; height:auto; object-fit:contain; cursor:zoom-out}
+.viewer .bar{display:flex; gap:24px; align-items:center; justify-content:center}
+.viewer button{background:none; border:0; color:var(--grey); font:inherit; font-variation-settings:"wdth" 112; font-weight:500; font-size:11.5px; letter-spacing:.28em; text-transform:uppercase; cursor:pointer; min-height:44px; padding:0 6px}
+.viewer button:hover{color:var(--white)}
+
+/* Opening motion */
+@media (prefers-reduced-motion: no-preference){
+  .opening .top, .opening h1{animation:fadein 1.4s ease .2s both}
+  .opening h1{animation-delay:.5s}
+  .waters, .intro, .opening .credits{animation:fadein 1.4s ease 1s both}
+  @keyframes fadein{from{opacity:0}to{opacity:1}}
+}
+
+/* Narrow */
+@media (max-width: 900px){
+  .sheet ol{grid-template-columns:repeat(5, minmax(0,1fr))}
+}
+@media (max-width: 640px){
+  body{font-size:16px}
+  .waters{grid-template-columns:1fr}
+  .tall img, .solo img, .ending img{width:100%; height:auto}
+  .tall .duo, .solo .duo, .ending .duo{width:100%}
+  .pair .imgs{width:100%}
+  .sheet ol{grid-template-columns:repeat(4, minmax(0,1fr))}
+  .cap{letter-spacing:.22em}
+  .nav .name{font-size:13px}
+  .nav a.cap{font-size:10.5px; letter-spacing:.12em}
+  .credits{grid-template-columns:minmax(0,1fr) 6px minmax(0,1.2fr); gap:10px 10px}
+}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav">
+  <div class="row">
+    <span class="l"><a class="cap" href="../">Maison AMG</a></span>
+    <a href="#top" class="name big" aria-label="Deux rives, haut de page">Deux rives</a>
+    <span class="r"><a class="cap" href="#planche">Planche</a></span>
+  </div>
+</header>
+
+<div class="page" id="top">
+
+  <header class="opening">
+    <div class="top"><span class="cap grey">Samer Amgira · Photographies</span></div>
+    <h1 aria-label="Deux rives">
+      <span class="ln big fit" aria-hidden="true">Deux</span>
+      <span class="ln thin fit" aria-hidden="true">rives</span>
+    </h1>
+    <div class="waters">
+      <figure>
+        <img class="tint auto" src="../img/eau-seine.jpg" width="1450" height="400" alt="Reflets verts et dorés d'un pont sur la Seine, la nuit">
+        <figcaption class="cap grey">La Seine, de nuit</figcaption>
+      </figure>
+      <figure>
+        <img class="tint auto" src="../img/eau-golfe.jpg" width="1449" height="480" alt="Vagues sombres et cuivrées au coucher du soleil">
+        <figcaption class="cap grey">La mer, au coucher</figcaption>
+      </figure>
+    </div>
+    <div class="intro">
+      <p>Ma vie se partage entre deux rives. D'un côté la Seine, ses pierres grises et ses vitrines. De l'autre, le sable, le Golfe et une lumière qui ne ressemble à aucune autre.</p>
+      <p>Entre les deux, il y a des départs, des attentes, des escales. Ces vingt images suivent ce trajet, dans l'ordre où je l'ai vécu.</p>
+    </div>
+    <dl class="credits" aria-label="Chapitres">
+      <dt class="num grey">I</dt><dd><a href="#la-seine">La Seine</a></dd>
+      <dt class="num grey">—</dt><dd><a href="#entre">Entre</a></dd>
+      <dt class="num grey">II</dt><dd><a href="#le-sable">Le sable</a></dd>
+      <dt class="num grey">III</dt><dd><a href="#le-golfe">Le Golfe</a></dd>
+      <dt class="num grey">IV</dt><dd><a href="#la-nuit">La nuit</a></dd>
+      <dt class="num grey">—</dt><dd><a href="#l-autre-rive">L'autre rive</a></dd>
+      <dt class="num grey">—</dt><dd><a href="#et-apres">Et après</a></dd>
+    </dl>
+  </header>
+
+  <!-- I -->
+  <section class="chapter" id="la-seine">
+    <header>
+      <div class="rule"><span class="num">I</span></div>
+      <h2 class="big">La Seine</h2>
+      <p>Le point de départ. Paris, ses quais, ses rues, et des gens qui attendent ou qui s'en vont.</p>
+    </header>
+    <div class="plates">
+      <figure class="plate wide" id="pl-01">
+        <img class="tint" src="../img/seine-grenelle.jpg" data-full width="2200" height="1467" alt="La tour Eiffel illuminée, la statue de la Liberté de l'île aux Cygnes et les tours du Front de Seine reflétées dans le fleuve">
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 01</span><span class="cap grey">Pont de Grenelle · Avril 2021</span></span>
+          <p class="thin">La tour, la petite Liberté de l'île aux Cygnes, et le Front de Seine encore allumé. Le fleuve garde tout en double.</p>
+        </figcaption>
+      </figure>
+      <figure class="plate tall" id="pl-02">
+        <img class="tint" src="../img/meilleur-moment.jpg" data-full width="956" height="1700" loading="lazy" alt="Vitrine éclairée d'une boutique nommée Meilleur Moment, une personne dort sur le seuil">
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 02</span><span class="cap grey">Paris · Le matin</span></span>
+          <p class="thin">L'enseigne dit « Meilleur moment ». Devant la vitrine, quelqu'un dort encore.</p>
+        </figcaption>
+      </figure>
+      <figure class="plate pair" id="pl-03">
+        <div class="imgs">
+          <img class="tint" src="../img/parapluie-rouge.jpg" data-full width="956" height="1700" loading="lazy" alt="Une femme en rouge sous un parapluie rouge, accoudée à un muret de pierre, téléphone en main">
+          <img class="tint" id="pl-04" src="../img/costume-bleu.jpg" data-full width="956" height="1700" loading="lazy" alt="Un homme en costume bleu et canotier marche le long d'un mur gris, parapluie à la main">
+        </div>
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 03 – 04</span><span class="cap grey">Paris · Jour de pluie</span></span>
+          <p class="thin">Elle, en rouge, attend. Lui, en bleu, s'en va.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Entre -->
+  <section class="chapter" id="entre">
+    <header><div class="rule"><span class="cap grey">Entre</span></div></header>
+    <figure class="plate solo" id="pl-05">
+      <img class="tint" src="../img/telesiege.jpg" data-full width="1360" height="1700" loading="lazy" alt="Un télésiège chargé de skieurs suspendu dans un ciel pâle au-dessus de sommets enneigés">
+      <figcaption class="cap-block">
+        <span class="where"><span class="num">Pl. 05</span><span class="cap grey">En altitude</span></span>
+        <p class="thin">Entre deux villes, il y a toujours un moment où l'on ne touche plus le sol.</p>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- II -->
+  <section class="chapter" id="le-sable">
+    <header>
+      <div class="rule"><span class="num">II</span></div>
+      <h2 class="big">Le sable</h2>
+      <p>Les lieux qu'on connaît par cœur avant de les avoir vus. Il faut y aller pour savoir à quoi ils ressemblent vraiment.</p>
+    </header>
+    <div class="plates">
+      <figure class="plate pair" id="pl-06">
+        <div class="imgs">
+          <img class="tint" src="../img/gizeh.jpg" data-full width="956" height="1700" loading="lazy" alt="Les trois pyramides de Gizeh sous un ciel bleu, une calèche tirée par un cheval blanc">
+          <img class="tint" id="pl-07" src="../img/fenetre-gizeh.jpg" data-full width="956" height="1700" loading="lazy" alt="Un mur de dessins d'enfants et de lettres manuscrites, une case vide laisse voir les pyramides">
+        </div>
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 06 – 07</span><span class="cap grey">Gizeh</span></span>
+          <p class="thin">Trois pyramides, une calèche, beaucoup de ciel. Puis le même désert, à travers un mur de dessins d'enfants et de lettres venues de partout. Une case est restée vide.</p>
+        </figcaption>
+      </figure>
+      <figure class="plate tall" id="pl-08">
+        <img class="tint" src="../img/la-mecque.jpg" data-full width="956" height="1700" loading="lazy" alt="L'angle de la Kaaba et une lanterne dorée, vus en contre-plongée dans un ciel blanc">
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 08</span><span class="cap grey">La Mecque</span></span>
+          <p class="thin">Ici, je n'ai fait que lever les yeux.</p>
+        </figcaption>
+      </figure>
+      <figure class="plate tall" id="pl-09">
+        <img class="tint" src="../img/escalier.jpg" data-full width="957" height="1700" loading="lazy" alt="Un grand escalier peint d'une mosaïque mène à des bâtiments blancs sous un ciel bleu uni">
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 09</span><span class="cap grey">Fin de matinée</span></span>
+          <p class="thin">Un escalier peint, un ciel sans un nuage. Deux silhouettes attendent qu'on monte.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- III -->
+  <section class="chapter" id="le-golfe">
+    <header>
+      <div class="rule"><span class="num">III</span></div>
+      <h2 class="big">Le Golfe</h2>
+      <p>Doha, où une partie de ma vie se joue. Le bois des boutres, le verre des tours, et des journées qui commencent au café.</p>
+    </header>
+    <div class="plates">
+      <figure class="plate solo" id="pl-10">
+        <img class="tint" src="../img/corniche.jpg" data-full width="1275" height="1700" loading="lazy" alt="Un boutre rouge amarré face aux tours de West Bay, sous un ciel strié de nuages">
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 10</span><span class="cap grey">Doha · La Corniche</span></span>
+          <p class="thin">Le boutre devant, les tours derrière. Le ciel fait le reste.</p>
+        </figcaption>
+      </figure>
+      <figure class="plate pair" id="pl-11">
+        <div class="imgs">
+          <img class="tint" src="../img/promenade.jpg" data-full width="956" height="1700" loading="lazy" alt="Une promenade au bord de l'eau à Lusail, les tours Katara au loin, un seul passant">
+          <img class="tint" id="pl-12" src="../img/katara.jpg" data-full width="956" height="1700" loading="lazy" alt="Les tours Katara en forme de croissant au-dessus d'un ponton et de l'eau bleue">
+        </div>
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 11 – 12</span><span class="cap grey">Lusail · Le jour</span></span>
+          <p class="thin">Un seul passant sur la promenade. Puis les tours Katara, de face, avec l'eau qui bouge dessous.</p>
+        </figcaption>
+      </figure>
+      <figure class="plate pair" id="pl-13">
+        <div class="imgs">
+          <img class="tint" src="../img/cafe-1.jpg" data-full width="956" height="1700" loading="lazy" alt="Comptoir d'un café en bois sombre, gobelets, pailles et magazines">
+          <img class="tint" id="pl-14" src="../img/cafe-2.jpg" data-full width="956" height="1700" loading="lazy" alt="Le même comptoir de café, cadré un peu plus près">
+        </div>
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 13 – 14</span><span class="cap grey">Un café</span></span>
+          <p class="thin">Deux images à quelques secondes d'écart. Rien n'a bougé, sauf moi.</p>
+        </figcaption>
+      </figure>
+      <figure class="plate tall" id="pl-15">
+        <img class="tint" src="../img/bureau.jpg" data-full width="956" height="1700" loading="lazy" alt="Un ordinateur portable ouvert et une tasse de café sur une table en terrasse, un arbre derrière">
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 15</span><span class="cap grey">Le bureau</span></span>
+          <p class="thin">La plupart du temps, le travail ressemble à ça. Un café, un écran, un arbre.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- IV -->
+  <section class="chapter" id="la-nuit">
+    <header>
+      <div class="rule"><span class="num">IV</span></div>
+      <h2 class="big">La nuit</h2>
+      <p>Quand la chaleur tombe, la ville se rallume. C'est l'heure où je sors l'appareil.</p>
+    </header>
+    <div class="plates">
+      <figure class="plate wide" id="pl-16">
+        <img class="tint" src="../img/lusail-nuit-2.jpg" data-full width="2200" height="1235" loading="lazy" alt="Les tours Katara et la skyline de Lusail illuminées, reflets colorés dans la marina">
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 16</span><span class="cap grey">Lusail · Après le coucher du soleil</span></span>
+          <p class="thin">Les tours s'allument une à une. L'eau les répète en couleurs.</p>
+        </figcaption>
+      </figure>
+      <figure class="plate tall" id="pl-17">
+        <img class="tint" src="../img/trois-tours.jpg" data-full width="956" height="1700" loading="lazy" alt="Trois tours éclairées de violet et leur reflet dans une eau parfaitement calme">
+        <figcaption class="cap-block">
+          <span class="where"><span class="num">Pl. 17</span><span class="cap grey">Lusail · Tard</span></span>
+          <p class="thin">Trois tours, et un reflet qui ne bouge pas.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- The other shore -->
+  <section class="ending" id="l-autre-rive">
+    <div class="rule"><span class="cap grey">Fin du trajet</span></div>
+    <h2 class="big">L'autre rive</h2>
+    <figure class="plate" id="pl-18">
+      <img class="tint" src="../img/mer.jpg" data-full width="956" height="1700" loading="lazy" alt="Coucher de soleil orange sur la mer, une petite silhouette dans l'eau au loin">
+      <figcaption class="cap-block">
+        <span class="where"><span class="num">Pl. 18</span><span class="cap grey">La mer · Le soir</span></span>
+        <p class="thin">Au bout du trajet, il reste la mer. C'est elle qui relie les deux rives.</p>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- Coda -->
+  <section class="chapter coda" id="et-apres">
+    <header><div class="rule"><span class="cap grey">Et après</span></div></header>
+    <figure class="plate pair" id="pl-19">
+      <div class="imgs">
+        <img class="tint" src="../img/lune.jpg" data-full width="600" height="1299" loading="lazy" alt="Une demi-lune grise et ses cratères sur un ciel noir">
+        <img class="tint" id="pl-20" src="../img/decapotable.jpg" data-full width="956" height="1700" loading="lazy" alt="L'arrière d'une décapotable turquoise des années 60, feux roses et chromes, devant une façade en pierre">
+      </div>
+      <figcaption class="cap-block">
+        <span class="where"><span class="num">Pl. 19 – 20</span><span class="cap grey">Le retour</span></span>
+        <p class="thin">La même lune au-dessus des deux rives. Puis Paris à nouveau, une vieille décapotable turquoise garée dans une rue calme.</p>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- Contact sheet -->
+  <section class="sheet" id="planche" aria-label="Planche contact">
+    <div class="rule" style="margin-bottom:28px"><span class="cap grey">Planche contact · 20 images</span></div>
+    <ol>
+      <li><a href="#pl-01"><img src="../img/seine-grenelle.jpg" loading="lazy" alt=""><span class="num grey">01</span></a></li>
+      <li><a href="#pl-02"><img src="../img/meilleur-moment.jpg" loading="lazy" alt=""><span class="num grey">02</span></a></li>
+      <li><a href="#pl-03"><img src="../img/parapluie-rouge.jpg" loading="lazy" alt=""><span class="num grey">03</span></a></li>
+      <li><a href="#pl-04"><img src="../img/costume-bleu.jpg" loading="lazy" alt=""><span class="num grey">04</span></a></li>
+      <li><a href="#pl-05"><img src="../img/telesiege.jpg" loading="lazy" alt=""><span class="num grey">05</span></a></li>
+      <li><a href="#pl-06"><img src="../img/gizeh.jpg" loading="lazy" alt=""><span class="num grey">06</span></a></li>
+      <li><a href="#pl-07"><img src="../img/fenetre-gizeh.jpg" loading="lazy" alt=""><span class="num grey">07</span></a></li>
+      <li><a href="#pl-08"><img src="../img/la-mecque.jpg" loading="lazy" alt=""><span class="num grey">08</span></a></li>
+      <li><a href="#pl-09"><img src="../img/escalier.jpg" loading="lazy" alt=""><span class="num grey">09</span></a></li>
+      <li><a href="#pl-10"><img src="../img/corniche.jpg" loading="lazy" alt=""><span class="num grey">10</span></a></li>
+      <li><a href="#pl-11"><img src="../img/promenade.jpg" loading="lazy" alt=""><span class="num grey">11</span></a></li>
+      <li><a href="#pl-12"><img src="../img/katara.jpg" loading="lazy" alt=""><span class="num grey">12</span></a></li>
+      <li><a href="#pl-13"><img src="../img/cafe-1.jpg" loading="lazy" alt=""><span class="num grey">13</span></a></li>
+      <li><a href="#pl-14"><img src="../img/cafe-2.jpg" loading="lazy" alt=""><span class="num grey">14</span></a></li>
+      <li><a href="#pl-15"><img src="../img/bureau.jpg" loading="lazy" alt=""><span class="num grey">15</span></a></li>
+      <li><a href="#pl-16"><img src="../img/lusail-nuit-2.jpg" loading="lazy" alt=""><span class="num grey">16</span></a></li>
+      <li><a href="#pl-17"><img src="../img/trois-tours.jpg" loading="lazy" alt=""><span class="num grey">17</span></a></li>
+      <li><a href="#pl-18"><img src="../img/mer.jpg" loading="lazy" alt=""><span class="num grey">18</span></a></li>
+      <li><a href="#pl-19"><img src="../img/lune.jpg" loading="lazy" alt=""><span class="num grey">19</span></a></li>
+      <li><a href="#pl-20"><img src="../img/decapotable.jpg" loading="lazy" alt=""><span class="num grey">20</span></a></li>
+    </ol>
+  </section>
+
+  <!-- Colophon -->
+  <section class="colophon">
+    <div class="rule" style="margin-bottom:clamp(40px,5vw,64px)"><span class="cap grey">Générique</span></div>
+    <dl class="credits">
+      <dt class="cap grey">Photographies</dt><dd>Samer Amgira</dd>
+      <dt class="cap grey">Sous le nom</dt><dd><a href="../">Maison AMG Films</a></dd>
+      <dt class="cap grey">Lieux</dt><dd>Paris, Gizeh, La Mecque, Doha</dd>
+      <dt class="cap grey">Instagram</dt><dd><a href="https://www.instagram.com/maisonamgfilms/" target="_blank" rel="noopener">@maisonamgfilms</a></dd>
+      <dt class="cap grey">Droits</dt><dd>Toutes les images © Samer Amgira</dd>
+    </dl>
+    <div class="wordmark big" id="wordmark" aria-hidden="true">Deux rives</div>
+    <footer><span class="cap grey">Une série de Maison AMG Films</span></footer>
+  </section>
+</div>
+
+<dialog class="viewer" id="viewer" aria-label="Image en grand">
+  <div class="in">
+    <img id="viewer-img" alt="">
+    <div class="bar">
+      <button type="button" id="viewer-prev" aria-label="Image précédente">←</button>
+      <span class="num grey" id="viewer-num"></span>
+      <button type="button" id="viewer-next" aria-label="Image suivante">→</button>
+      <button type="button" id="viewer-close">Fermer</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  document.documentElement.lang = 'fr';
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* ---- Title lines to one measure; the wordmark fills the page ---- */
+  function fit(){
+    document.querySelectorAll('.fit').forEach(function(el){
+      el.style.fontSize = '100px'; el.style.display = 'inline-block';
+      var w = el.getBoundingClientRect().width, box = el.parentNode.clientWidth;
+      el.style.display = '';
+      if (w) el.style.fontSize = Math.min(230, 100 * box * 0.98 / w) + 'px';
+    });
+    var wm = document.getElementById('wordmark');
+    wm.style.fontSize = '100px';
+    var ww = wm.scrollWidth;
+    if (ww) wm.style.fontSize = (100 * wm.clientWidth * 0.99 / ww) + 'px';
+  }
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(fit, 120); });
+
+  /* ---- Each photograph holds in black and white for two seconds, then the colour comes in ----
+     It is printed twice: black and white underneath, colour on top. Once at least half of it
+     is on screen, a two-second count starts; if it leaves before, the count is cancelled.
+     Then the colour print fades in over the whole frame and stays. The opening shot waits
+     for the title sequence to finish, then holds its two seconds too. */
+  var HOLD = 2000;
+  var duos = Array.prototype.slice.call(document.querySelectorAll('img.tint')).map(function(col){
+    var wrap = document.createElement('span'); wrap.className = 'duo';
+    col.parentNode.insertBefore(wrap, col);
+    var bw = col.cloneNode(false);
+    bw.className = 'bw'; bw.alt = ''; bw.setAttribute('aria-hidden', 'true');
+    bw.removeAttribute('id'); bw.removeAttribute('data-full'); bw.removeAttribute('data-ta');
+    col.classList.add('col');
+    if (col.id) { wrap.id = col.id; col.removeAttribute('id'); }
+    wrap.appendChild(bw); wrap.appendChild(col);
+    return { wrap: wrap, hero: !!wrap.closest('.scope'), timer: null };
+  });
+  function reveal(d){ d.wrap.classList.add('on'); }
+  if (still || !('IntersectionObserver' in window)) { document.documentElement.classList.add('still'); duos.forEach(reveal); }
+  else {
+    duos.forEach(function(d){ if (d.hero) setTimeout(function(){ reveal(d); }, 2700 + HOLD); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var d = e.target._duo;
+        var seen = e.isIntersecting && (e.intersectionRatio >= 0.5 || e.intersectionRect.height >= window.innerHeight * 0.5);
+        if (seen && !d.timer) d.timer = setTimeout(function(){ reveal(d); io.unobserve(d.wrap); }, HOLD);
+        else if (!seen && d.timer) { clearTimeout(d.timer); d.timer = null; }
+      });
+    }, {threshold:[0, .25, .5, .75, 1]});
+    duos.forEach(function(d){ if (!d.hero) { d.wrap._duo = d; io.observe(d.wrap); } });
+  }
+
+  /* ---- Viewer ---- */
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('img[data-full]'));
+  var dlg = document.getElementById('viewer'), vImg = document.getElementById('viewer-img'), vNum = document.getElementById('viewer-num');
+  var i = 0;
+  function show(n){
+    i = (n + imgs.length) % imgs.length;
+    vImg.src = imgs[i].src; vImg.alt = imgs[i].alt;
+    vNum.textContent = 'Pl. ' + String(i + 1).padStart(2, '0') + ' / ' + imgs.length;
+  }
+  function open(n){ show(n); try { dlg.showModal(); } catch(e){ dlg.setAttribute('open',''); } }
+  function close(){ if (dlg.close) dlg.close(); else dlg.removeAttribute('open'); }
+  imgs.forEach(function(el, n){
+    el.tabIndex = 0;
+    el.addEventListener('click', function(){ open(n); });
+    el.addEventListener('keydown', function(e){ if (e.key === 'Enter') open(n); });
+  });
+  vImg.addEventListener('click', close);
+  document.getElementById('viewer-close').addEventListener('click', close);
+  document.getElementById('viewer-prev').addEventListener('click', function(){ show(i - 1); });
+  document.getElementById('viewer-next').addEventListener('click', function(){ show(i + 1); });
+  dlg.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight') show(i + 1);
+    if (e.key === 'ArrowLeft') show(i - 1);
+  });
+})();
+</script>
+</body>
+</html>
