@@ -86,6 +86,16 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .lang button{background:none; border:0; color:var(--grey); font:inherit; letter-spacing:inherit; text-transform:inherit; min-height:44px; padding:0 8px; cursor:pointer; transition:color .3s}
 .lang button:hover, .lang button[aria-pressed="true"]{color:var(--white)}
 .lang i{font-style:normal; color:var(--grey)}
+/* Portfolio stays in the fixed header, so it is one tap away from anywhere on the page.
+   PROPOSITION (08/11/2026), two placements to compare, ?nav=b shows the second:
+   A, a line of its own under the name, framed by two short rules like a chapter card;
+   B, beside Contact on the same line, the two stacked one above the other on a phone. */
+.nav .sub{display:flex; justify-content:center; margin-top:-4px}
+.nav .sub a.cap{display:inline-flex; align-items:center; gap:12px; min-height:36px}
+.nav .sub a.cap::before, .nav .sub a.cap::after{content:""; width:22px; height:1px; background:var(--line)}
+.nav .r .pf{display:none}
+.nav-b .nav .sub{display:none}
+.nav-b .nav .r .pf{display:inline-flex; margin-right:26px}
 
 /* ---------- Opening: the title sequence ---------- */
 .open{padding-block:clamp(100px,13vw,170px) clamp(80px,10vw,140px); display:flex; flex-direction:column; align-items:center; gap:clamp(22px,2.6vw,34px)}
@@ -207,6 +217,9 @@ dialog.viewer{overscroll-behavior:contain}
 }
 @media (max-width: 560px){
   .nav .name{font-size:13px}
+  .nav-b .nav .r{display:flex; flex-direction:column; align-items:flex-end}
+  .nav-b .nav .r a.cap{min-height:32px}
+  .nav-b .nav .r .pf{margin-right:0}
   .cap{letter-spacing:.22em}
   .scope{aspect-ratio:16/10}
   .ctas{flex-direction:column; width:100%}
@@ -225,8 +238,9 @@ dialog.viewer{overscroll-behavior:contain}
   <div class="row">
     <span class="l"><span class="lang cap" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" aria-pressed="true">FR</button><i aria-hidden="true">/</i><button type="button" data-lang="en" aria-pressed="false">EN</button></span></span>
     <a href="#top" class="name big" aria-label="Maison AMG Films, haut de page" data-tl="top">Maison AMG</a>
-    <span class="r"><a class="cap" href="#fin">Contact</a></span>
+    <span class="r"><a class="cap pf" href="portfolio/">Portfolio</a><a class="cap" href="#fin">Contact</a></span>
   </div>
+  <div class="sub"><a class="cap" href="portfolio/">Portfolio</a></div>
 </header>
 
 <main id="top">
@@ -336,7 +350,7 @@ dialog.viewer{overscroll-behavior:contain}
         </figure>
       </div>
       <div class="ctas rv" style="margin-top:clamp(64px,8vw,110px)">
-        <a class="btn" href="deux-rives/" data-t="series">La série complète · Deux rives</a>
+        <a class="btn" href="portfolio/" data-t="series">Voir le portfolio</a>
       </div>
     </div>
   </section>
@@ -411,6 +425,9 @@ dialog.viewer{overscroll-behavior:contain}
     var s = document.querySelector('[data-yt]'), a = document.createElement('a');
     a.href = YOUTUBE; a.target = "_blank"; a.rel = "noopener"; a.textContent = s.textContent; s.innerHTML = ''; s.appendChild(a);
   }
+
+  /* PROPOSITION only: ?nav=b shows placement B of the Portfolio link, to compare with A */
+  if (/[?&]nav=b/.test(location.search)) document.documentElement.classList.add('nav-b');
 
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -586,7 +603,7 @@ dialog.viewer{overscroll-behavior:contain}
     c2: "The towers light up one by one.", c2p: "Lusail · After sunset",
     c3: "Giza, then Lusail.", c3p: "The sand · The night",
     c4: "Between two cities, your feet leave the ground.", c4p: "At altitude",
-    series: "The full series · Deux rives",
+    series: "See the portfolio",
     lead: "From art direction to the final color grade, every shot is conceived as a scene from a film.",
     hosp: "Hospitality", t1: "Lifestyle",
     t1p: "Bringing out the atmosphere, the interior architecture and the guest experience of 4-star and 5-star hotels and palaces.",
