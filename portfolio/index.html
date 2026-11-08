@@ -194,15 +194,6 @@ dialog.viewer{overscroll-behavior:contain}
 /* Same for the chapter titles: "MOUVEMENT" at the 40 px floor ran 16 px past a 320 px phone */
 .ending h2{font-size:clamp(30px,10.4vw,128px)}
 .chapter h2{font-size:clamp(30px,10vw,112px)}
-/* PROPOSITION (08/11/2026), ?filtre=80 : the colour print as an 80s film print, kept light.
-   Warmer, a little faded, blacks lifted to a warm brown, the silver grain stays after the colour
-   arrives, and a soft vignette. The black and white phase is unchanged. Without it, the photos
-   keep the grade Samer gave them at the time. */
-.f80 .duo .col, .f80 .viewer img{filter:sepia(.2) saturate(1.12) contrast(.9) brightness(1.03) hue-rotate(-5deg)}
-.f80 .duo::before{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0; transition:opacity 2.6s cubic-bezier(.4,0,.2,1);
-  background:radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(20,12,6,.38) 100%), rgba(42,30,20,.16); mix-blend-mode:normal}
-.f80 .duo.on::before, .f80.still .duo::before{opacity:1}
-.f80 .duo.on::after, .f80.still .duo::after{opacity:.32}
 @media (max-width: 640px){
   .pairl .imgs{grid-template-columns:1fr}
   .mid img, .mid .duo{width:100%}
@@ -251,10 +242,10 @@ dialog.viewer{overscroll-behavior:contain}
     </header>
     <div class="plates">
       <figure class="plate tall" id="pl-01">
-        <img class="tint" src="../img/portfolio/coran.jpg" data-full width="1133" height="1700" alt="Un Coran ouvert posé sur un tapis de prière brodé d'une mosquée, dans le noir">
+        <img class="tint" src="../img/portfolio/coran.jpg" data-full width="1133" height="1700" alt="Un Coran ouvert, éclairé dans l'obscurité, sur un tapis de prière">
         <figcaption class="cap-block">
-          <span class="where"><span class="num">Pl. 01</span><span class="cap grey">Le commencement</span></span>
-          <p class="thin">Avant de photographier le monde, un livre ouvert sur un tapis de prière.</p>
+          <span class="where"><span class="num">Pl. 01</span><span class="cap grey">La méditation</span></span>
+          <p class="thin">Une pause de méditation avec le Coran. Il éclaire dans l'obscurité et montre le chemin vers qui l'on est. C'est lui qui me guide, et qui me guidera.</p>
         </figcaption>
       </figure>
       <figure class="plate tall" id="pl-02">
@@ -755,8 +746,6 @@ dialog.viewer{overscroll-behavior:contain}
 <script>
 (function(){
   document.documentElement.lang = 'fr';
-  /* PROPOSITION only: ?filtre=80 shows the 80s film print, to compare with the original grade */
-  if (/[?&]filtre=80/.test(location.search)) document.documentElement.classList.add('f80');
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 

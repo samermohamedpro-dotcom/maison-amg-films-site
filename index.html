@@ -88,20 +88,15 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .lang button{background:none; border:0; color:var(--grey); font:inherit; letter-spacing:inherit; text-transform:inherit; min-height:44px; padding:0 8px; cursor:pointer; transition:color .3s}
 .lang button:hover, .lang button[aria-pressed="true"]{color:var(--white)}
 .lang i{font-style:normal; color:var(--grey)}
-/* Portfolio stays in the fixed header, so it is one tap away from anywhere on the page.
-   PROPOSITION (08/11/2026), two placements to compare, ?nav=b shows the second:
-   A, a line of its own under the name, framed by two short rules like a chapter card;
-   B, beside Contact on the same line, the two stacked one above the other on a phone. */
+/* Portfolio stays in the fixed header, one tap away from anywhere on the page: a line of its
+   own under the name, framed by two short rules like a chapter card. Chosen by Samer on
+   08/11/2026 over the other placement tried, beside Contact (crowded on a phone). */
 .nav .sub{display:flex; justify-content:center; margin-top:-4px}
 .nav .sub a.cap{display:inline-flex; align-items:center; gap:12px; min-height:36px}
 .nav .sub a.cap::before, .nav .sub a.cap::after{content:""; width:22px; height:1px; background:var(--line)}
-.nav .r .pf{display:none}
-.nav-b .nav .sub{display:none}
-.nav-b .nav .r .pf{display:inline-flex; margin-right:26px}
 
 /* ---------- Opening: the title sequence ---------- */
 .open{padding-block:clamp(100px,13vw,170px) clamp(80px,10vw,140px); display:flex; flex-direction:column; align-items:center; gap:clamp(22px,2.6vw,34px)}
-.presents{display:flex; flex-direction:column; gap:8px}
 .scope{position:relative; width:min(100%, 1200px); aspect-ratio:2.39/1; max-width:100%; overflow:hidden; background:#000}
 .scope img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 58%}
 /* Black and white underneath, the colour print on top, faded in over the whole frame.
@@ -116,18 +111,18 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 .duo.on .col{opacity:1}
 .still .duo .col{opacity:1}
 .scope .duo{position:absolute; inset:0}
-.scope .tc{z-index:2; position:absolute; left:14px; right:14px; bottom:10px; display:flex; justify-content:space-between; gap:12px; color:rgba(241,239,233,.85); text-shadow:0 1px 8px rgba(0,0,0,.9)}
 .title{margin:0; width:min(100%, 1200px); font-weight:400}
 .title .ln{display:block; white-space:nowrap}
 .title .big{font-size:clamp(34px,10.4vw,150px)}
 .title .thin{font-size:clamp(34px,8.4vw,124px); line-height:1.05}
-.open .credits{margin-top:6px}
+.open .ctas{flex-direction:column; align-items:center; gap:18px}
+.quiet{display:inline-flex; align-items:center; min-height:44px; border-bottom:1px solid var(--line); transition:border-color .3s}
+.quiet:hover{border-color:var(--white)}
 .ctas{display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-top:8px}
 
 @media (prefers-reduced-motion: no-preference){
-  .presents{animation:fadein 1.2s ease .2s both}
   .scope{animation:gate 1.8s cubic-bezier(.77,0,.18,1) .9s both}
-  .title, .open .credits, .ctas{animation:fadein 1.4s ease 2.4s both}
+  .title, .ctas{animation:fadein 1.4s ease 2.4s both}
   @keyframes fadein{from{opacity:0}to{opacity:1}}
   @keyframes gate{from{clip-path:inset(49.6% 0 49.6% 0)}to{clip-path:inset(0)}}
 }
@@ -211,13 +206,11 @@ dialog.viewer{overscroll-behavior:contain}
 }
 @media (max-width: 560px){
   .nav .name{font-size:13px}
-  .nav-b .nav .r{display:flex; flex-direction:column; align-items:flex-end}
-  .nav-b .nav .r a.cap{min-height:32px}
-  .nav-b .nav .r .pf{margin-right:0}
   .cap{letter-spacing:.22em}
   .scope{aspect-ratio:16/10}
   .ctas{flex-direction:column; width:100%}
   .ctas .btn{width:100%}
+  .open .ctas .btn{width:auto; padding:0 34px}
   .credits{grid-template-columns:minmax(0,1fr) 6px minmax(0,1.15fr); gap:12px 10px}
   .credits dt{font-size:10.5px; letter-spacing:.16em}
   .shot.two .imgs{grid-template-columns:repeat(2, minmax(0,1fr))}
@@ -232,7 +225,7 @@ dialog.viewer{overscroll-behavior:contain}
   <div class="row">
     <span class="l"><span class="lang cap" role="group" aria-label="Langue / Language"><button type="button" data-lang="fr" aria-pressed="true">FR</button><i aria-hidden="true">/</i><button type="button" data-lang="en" aria-pressed="false">EN</button></span></span>
     <a href="#top" class="name big" aria-label="Maison AMG Films, haut de page" data-tl="top">Maison AMG</a>
-    <span class="r"><a class="cap pf" href="portfolio/">Portfolio</a><a class="cap" href="#fin">Contact</a></span>
+    <span class="r"><a class="cap" href="#fin">Contact</a></span>
   </div>
   <div class="sub"><a class="cap" href="portfolio/">Portfolio</a></div>
 </header>
@@ -240,25 +233,16 @@ dialog.viewer{overscroll-behavior:contain}
 <main id="top">
   <!-- Title sequence -->
   <section class="open wrap" aria-label="Présentation" data-tl="intro">
-    <div class="presents">
-      <span class="cap">Maison AMG Films</span>
-      <span class="cap grey" data-t="presents">présente</span>
-    </div>
     <div class="scope">
       <img class="tint" src="img/seine-grenelle.jpg" alt="La tour Eiffel, la statue de la Liberté de l'île aux Cygnes et les tours du Front de Seine, la nuit, reflétées dans le fleuve" data-ta="altSeine" width="2200" height="1467">
-      <div class="tc cap" aria-hidden="true"><span>Paris</span><span>Pont de Grenelle</span></div>
     </div>
     <h1 class="title" aria-label="Réalisation et films de marque." data-tl="h1">
       <span class="ln big fit" data-t="h1a">Réalisation</span>
       <span class="ln thin fit" data-t="h1b">&amp; films de marque.</span>
     </h1>
-    <dl class="credits">
-      <dt class="cap grey" data-t="for">Pour</dt><dd data-t="forV">l'hôtellerie de luxe, les marques et l'architecture</dd>
-      <dt class="cap grey" data-t="between">Depuis</dt><dd data-t="betweenV">Paris, à l'international</dd>
-    </dl>
     <div class="ctas">
       <a href="portfolio/" class="btn fill" data-t="cta1">Voir le portfolio</a>
-      <a href="#fin" class="btn" data-wa data-t="cta2">Réserver un tournage</a>
+      <a href="#fin" class="quiet cap" data-wa data-t="cta2">Réserver un tournage</a>
     </div>
   </section>
 
@@ -279,7 +263,7 @@ dialog.viewer{overscroll-behavior:contain}
       <div class="reel">
         <figure class="shot two">
           <div class="imgs">
-            <div class="p"><img class="tint" src="img/portfolio/coran.jpg" data-full width="1133" height="1700" loading="lazy" alt="Un Coran ouvert posé sur un tapis de prière brodé d'une mosquée" data-ta="altQuran"></div>
+            <div class="p"><img class="tint" src="img/portfolio/coran.jpg" data-full width="1133" height="1700" loading="lazy" alt="Un Coran ouvert, éclairé dans l'obscurité, sur un tapis de prière" data-ta="altQuran"></div>
             <div class="p"><img class="tint" src="img/la-mecque.jpg" data-full width="956" height="1700" loading="lazy" alt="L'angle de la Kaaba et une lanterne dorée, vus en contre-plongée" data-ta="altMecca"></div>
           </div>
           <figcaption><span class="thin" data-t="c1">Je cherche Allah, pour qu'Il m'invite enfin dans Sa maison.</span><span class="cap grey" data-t="c1p">La foi</span></figcaption>
@@ -395,9 +379,6 @@ dialog.viewer{overscroll-behavior:contain}
     var s = document.querySelector('[data-yt]'), a = document.createElement('a');
     a.href = YOUTUBE; a.target = "_blank"; a.rel = "noopener"; a.textContent = s.textContent; s.innerHTML = ''; s.appendChild(a);
   }
-
-  /* PROPOSITION only: ?nav=b shows placement B of the Portfolio link, to compare with A */
-  if (/[?&]nav=b/.test(location.search)) document.documentElement.classList.add('nav-b');
 
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -529,11 +510,8 @@ dialog.viewer{overscroll-behavior:contain}
   /* ---- French and English: French is written in the page, English lives here ---- */
   var EN = {
     top: "Maison AMG Films, back to top", intro: "Introduction", manifesto: "Manifesto", viewer: "Full-size media",
-    presents: "presents",
     altSeine: "The Eiffel Tower, the Statue of Liberty on the Île aux Cygnes and the Front de Seine towers at night, reflected in the river",
     h1: "Filmmaking and brand films.", h1a: "Filmmaking", h1b: "&amp; brand films.",
-    "for": "For", forV: "luxury hospitality, brands and architecture",
-    between: "From", betweenV: "Paris, working internationally",
     cta1: "See the portfolio", cta2: "Book a shoot",
     m1: "My life is split", m2: "between two shores.",
     m3: "On one side, the Seine, its grey stone and its shop windows. On the other, the sand, the Gulf, and a light like no other.",
@@ -542,7 +520,7 @@ dialog.viewer{overscroll-behavior:contain}
     altRed: "A woman in red under a red umbrella, leaning on a low stone wall",
     altBlue: "A man in a blue suit and a boater hat walks along a grey wall",
     altLusail: "The Lusail skyline lit up at night, coloured reflections in the marina",
-    altQuran: "An open Quran on a prayer rug embroidered with a mosque",
+    altQuran: "An open Quran lit in the dark, on a prayer rug",
     altMecca: "The corner of the Kaaba and a golden lantern, seen from below",
     altKiss: "A man in a keffiyeh kisses his camel, decked with coloured tassels",
     c1: "I seek Allah, that He may at last invite me into His house.", c1p: "Faith",
