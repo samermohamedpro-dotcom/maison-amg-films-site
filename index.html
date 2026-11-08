@@ -105,9 +105,9 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 /* The black and white is its own print: hard contrast, deep blacks, silver grain. The grain lifts as the colour arrives. */
 .duo .bw{filter:grayscale(1) contrast(1.4) brightness(.88)}
 .duo::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 2.2 -.6'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>"); background-size:160px 160px; transition:opacity 2.6s cubic-bezier(.4,0,.2,1)}
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 2.2 -.6'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>"); background-size:160px 160px; transition:opacity 1.2s cubic-bezier(.4,0,.2,1)}
 .duo.on::after, .still .duo::after{opacity:0}
-.duo .col{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 2.6s cubic-bezier(.4,0,.2,1)}
+.duo .col{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.2s cubic-bezier(.4,0,.2,1)}
 .duo.on .col{opacity:1}
 .still .duo .col{opacity:1}
 .scope .duo{position:absolute; inset:0}
@@ -401,12 +401,14 @@ dialog.viewer{overscroll-behavior:contain}
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(fit, 120); });
 
-  /* ---- Each photograph holds in black and white for two seconds, then the colour comes in ----
+  /* ---- Each photograph holds in black and white for one second, then the colour comes in ----
+     Samer, 08/11/2026: "il faut que l'effet aille plus vite du noir et blanc à la couleur".
+     It was 2 s of black and white and a 2.6 s fade; now 1 s, and a 1.2 s fade (in the CSS).
      It is printed twice: black and white underneath, colour on top. Once at least half of it
-     is on screen, a two-second count starts; if it leaves before, the count is cancelled.
+     is on screen, the count starts; if it leaves before, the count is cancelled.
      Then the colour print fades in over the whole frame and stays. The opening shot waits
-     for the title sequence to finish, then holds its two seconds too. */
-  var HOLD = 2000;
+     for the title sequence to finish, then holds its second too. */
+  var HOLD = 1000;
   var duos = Array.prototype.slice.call(document.querySelectorAll('img.tint')).map(function(col){
     var wrap = document.createElement('span'); wrap.className = 'duo';
     col.parentNode.insertBefore(wrap, col);
