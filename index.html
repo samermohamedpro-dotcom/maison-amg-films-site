@@ -105,9 +105,9 @@ body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-in
 /* The black and white is its own print: hard contrast, deep blacks, silver grain. The grain lifts as the colour arrives. */
 .duo .bw{filter:grayscale(1) contrast(1.4) brightness(.88)}
 .duo::after{content:""; position:absolute; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 2.2 -.6'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>"); background-size:160px 160px; transition:opacity 1.2s cubic-bezier(.4,0,.2,1)}
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' seed='9' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 2.2 -.6'/></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>"); background-size:160px 160px; transition:opacity .8s cubic-bezier(.4,0,.2,1)}
 .duo.on::after, .still .duo::after{opacity:0}
-.duo .col{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.2s cubic-bezier(.4,0,.2,1)}
+.duo .col{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .8s cubic-bezier(.4,0,.2,1)}
 .duo.on .col{opacity:1}
 .still .duo .col{opacity:1}
 .scope .duo{position:absolute; inset:0}
@@ -214,6 +214,39 @@ dialog.viewer{overscroll-behavior:contain}
   .credits{grid-template-columns:minmax(0,1fr) 6px minmax(0,1.15fr); gap:12px 10px}
   .credits dt{font-size:10.5px; letter-spacing:.16em}
   .shot.two .imgs{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+</style>
+<style>
+/* Plus lisible, plus d'air (Samer, 13/11/2026 : "plus lisible, plus respirant").
+   Written last so it wins over the rules above, media queries included.
+   - Captions and running text were a hairline condensed italic (weight 200, width 62): elegant on a
+     large screen, hard to read on a phone. Reading text gets weight 300-350, a wider cut, more leading.
+     The big display titles keep their thin condensed voice: they are read as shapes, not as lines.
+   - The grey goes from #8f8c86 to #a8a49d (about 8:1 on the black instead of 6:1).
+   - More air: wider side margins from 360 px up (a 320 px phone keeps 16 px so the header still fits),
+     more space between photos, and between a photo and its words.
+   - The film grain over the whole page is lighter, so it no longer sits on the letters. */
+:root{--grey:#a8a49d}
+@media (min-width:360px){
+  :root{--gutL:max(clamp(22px,6vw,80px), env(safe-area-inset-left,0px)); --gutR:max(clamp(22px,6vw,80px), env(safe-area-inset-right,0px))}
+}
+.grain{opacity:.045}
+.cap-block p, .shot figcaption .thin{font-variation-settings:"wdth" 80; font-weight:300; letter-spacing:0; line-height:1.4; font-size:clamp(19px,1.8vw,24px)}
+.cap-block{gap:12px; max-width:27em}
+.plate, .shot{gap:24px}
+.plates, .reel{gap:clamp(100px,13vw,190px)}
+.intro{gap:22px}
+.intro p{line-height:1.6}
+.intro p + p, .chapter > header p, .manifesto p, .trade p, .film .meta p{font-weight:350; line-height:1.7}
+.chapter > header{gap:22px}
+/* With the wider margins "MA VIE SE PARTAGE" broke onto two lines at 390 px: one size smaller on a phone */
+.manifesto blockquote{font-size:clamp(30px,5.6vw,84px)}
+.lead{line-height:1.6}
+.credits{row-gap:20px}
+@media (max-width:640px){
+  .cap{letter-spacing:.2em}
+  .credits dt{font-size:11.5px; letter-spacing:.16em}
+  .cap-block p, .shot figcaption .thin{font-size:19px}
 }
 </style>
 </head>
@@ -401,14 +434,14 @@ dialog.viewer{overscroll-behavior:contain}
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   var rz; window.addEventListener('resize', function(){ clearTimeout(rz); rz = setTimeout(fit, 120); });
 
-  /* ---- Each photograph holds in black and white for one second, then the colour comes in ----
-     Samer, 08/11/2026: "il faut que l'effet aille plus vite du noir et blanc à la couleur".
-     It was 2 s of black and white and a 2.6 s fade; now 1 s, and a 1.2 s fade (in the CSS).
+  /* ---- Each photograph holds in black and white for half a second, then the colour comes in ----
+     Samer asked twice for it to be quicker: 2 s and a 2.6 s fade at first, 1 s and 1.2 s on
+     08/11/2026, now half a second and a 0.8 s fade (in the CSS), 13/11/2026.
      It is printed twice: black and white underneath, colour on top. Once at least half of it
      is on screen, the count starts; if it leaves before, the count is cancelled.
      Then the colour print fades in over the whole frame and stays. The opening shot waits
      for the title sequence to finish, then holds its second too. */
-  var HOLD = 1000;
+  var HOLD = 500;
   var duos = Array.prototype.slice.call(document.querySelectorAll('img.tint')).map(function(col){
     var wrap = document.createElement('span'); wrap.className = 'duo';
     col.parentNode.insertBefore(wrap, col);
